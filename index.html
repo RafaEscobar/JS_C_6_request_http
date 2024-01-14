@@ -1,13 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Consumir API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="flex flex-col">
+      <span id="nose" class="font-semibold text-3xl"></span>
+      <div id="app" class="w-full flex flex-wrap gap-4 justify-center mt-8 mb-4">
+
+      </div>
+      <div class="flex justify-end mr-8 mb-6">
+        <button class="bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700" id="nextPageBtn">Siguiente ></button>
+      </div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
