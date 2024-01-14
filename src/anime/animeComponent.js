@@ -1,6 +1,13 @@
 
-const fetchData = async() => {
-    const response = await fetch('https://api.jikan.moe/v4/top/anime');
+const fetchData = async(newPage) => {
+    const queryParams = {
+        page: newPage,
+    };
+
+    const url = new URL('https://api.jikan.moe/v4/top/anime');
+    url.search = new URLSearchParams(queryParams).toString();
+
+    const response = await fetch(url);
     const responseBody = await response.json();
     return responseBody['data'];
 }
@@ -25,6 +32,6 @@ export const animeComponent = (element) => {
             element.appendChild(animeCard);
         }
     }
-    fetchData()
+    fetchData(2)
         .then( generateCard );
 }
