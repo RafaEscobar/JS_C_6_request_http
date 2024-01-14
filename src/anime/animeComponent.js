@@ -16,6 +16,7 @@ const showBtn = (option) => {
 }
 
 const generateCard = (data, element) => {
+    setContentNull(element);
     for (const item of data) {
         const animeCard = document.createElement("div");
         animeCard.innerHTML = `
@@ -31,13 +32,33 @@ const generateCard = (data, element) => {
     }
 }
 
+const showLoading = (element) => {
+    element.innerHTML = `
+        <div class="w-full h-screen flex justify-center items-center">
+            <div class="flex items-center gap-2">
+                <span class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 animate-bounce">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </span>
+                <span class="block animate-bounce text-6xl">Cargando...</span>
+            </div>
+        </div>
+    `;
+}
+
+const setContentNull = (element) => {
+    element.innerHTML = null;
+}
+
 /**
  *
  * @param {HTMLDivElement} element
  */
 export const animeComponent = async(element, currentPage = 1) => {
     showBtn('hidden');
-    element.innerHTML = null;
+    setContentNull(element);
+    showLoading(element);
 
     await fetchData(currentPage)
         .then( (data) => generateCard(data, element) );
