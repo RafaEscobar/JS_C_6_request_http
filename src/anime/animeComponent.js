@@ -16,7 +16,8 @@ const fetchData = async(newPage) => {
  *
  * @param {HTMLDivElement} element
  */
-export const animeComponent = (element) => {
+export const animeComponent = (element, currentPage = 1) => {
+    element.innerHTML = null;
     const generateCard = (data) => {
         for (const item of data) {
             const animeCard = document.createElement("div");
@@ -32,6 +33,6 @@ export const animeComponent = (element) => {
             element.appendChild(animeCard);
         }
     }
-    fetchData(2)
+    fetchData(currentPage)
         .then( generateCard );
 }
